@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\x64\Debug\CudaRuntime.dll</FullPath>
+      <FullPath>D:\School\Parallel_Assignment_2\Mandelbrot\x64\Debug\CudaRuntime.dll</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

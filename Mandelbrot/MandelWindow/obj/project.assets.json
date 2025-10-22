@@ -8,23 +8,23 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\agryt\\.nuget\\packages\\": {},
+    "C:\\Users\\Sebastian\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
+      "projectUniqueName": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
       "projectName": "MandelWindow",
-      "projectPath": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
-      "packagesPath": "C:\\Users\\agryt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\obj\\",
+      "projectPath": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
+      "packagesPath": "C:\\Users\\Sebastian\\.nuget\\packages\\",
+      "outputPath": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\agryt\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Sebastian\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

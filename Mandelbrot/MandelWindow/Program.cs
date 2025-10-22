@@ -24,6 +24,9 @@ namespace MandelWindow
         static extern int setCudaDevice(int device);
         [DllImport("CudaRuntime.dll")]
         static extern int addWithCuda([Out] int[] c, [In] int[] a, [In] int[] b, uint size);
+        [DllImport("CudaRuntime.dll")]
+        static extern int computeMandelWithCuda([Out] int[] output, int width, int height,
+ double centerX, double centerY, double mandelWidth, double mandelHeight, int maxDepth);
         // --------------------------------------------------------------------
         // Attributes
         // --------------------------------------------------------------------
@@ -38,8 +41,8 @@ namespace MandelWindow
         static double zoomCenterY = -1.0260970739840185;
         static int stepsCounter = 1;
         static int stepsDirection = 1;
-// The bounds for the Mandelbrot rectangle
-static double mandelCenterX = 0.0;
+        // The bounds for the Mandelbrot rectangle
+        static double mandelCenterX = 0.0;
         static double mandelCenterY = 0.0;
         static double mandelWidth = 2.0;
         static double mandelHeight = 2.0;
@@ -47,7 +50,7 @@ static double mandelCenterX = 0.0;
         public static int mandelDepth = 360;
         // If true, the code calls UpdateMandelParallel(),
         // else it calls UpdateMandel().
-        static bool useParallel = false;
+        static bool useParallel = true;
         // --------------------------------------------------------------------
         // Main Method
         // --------------------------------------------------------------------
@@ -362,7 +365,64 @@ int color_data = R << 16; // R
         /// </summary>
         public static void UpdateMandelParallel()
         {
-            UpdateMandel();
+            
+    Application.Current.Dispatcher.Invoke(new Action(() =>
+ {
+ try
+ {
+ bitmap.Lock();
+ int width = bitmap.PixelWidth;
+ int height = bitmap.PixelHeight;
+ if (width ==0 || height ==0)
+ {
+ Trace.WriteLine($"Bitmap size is zero: {width}x{height}");
+ bitmap.Unlock();
+ return;
+ }
+ int totalPixels = width * height;
+ int[] iterationCounts = new int[totalPixels];
+ setCudaDevice(0);
+ int result = computeMandelWithCuda(iterationCounts, width, height,
+ mandelCenterX, mandelCenterY, mandelWidth, mandelHeight, mandelDepth);
+ Trace.WriteLine($"computeMandelWithCuda returned: {result}");
+ Trace.WriteLine($"Sample iterationCounts: {iterationCounts[0]}, {iterationCounts[totalPixels/2]}, {iterationCounts[totalPixels-1]}");
+ if (result ==0)
+ {
+ unsafe
+ {
+ for (int row =0; row < height; row++)
+ {
+ for (int column =0; column < width; column++)
+ {
+ IntPtr pBackBuffer = bitmap.BackBuffer;
+ pBackBuffer += row * bitmap.BackBufferStride;
+ pBackBuffer += column *4;
+ int light = iterationCounts[row * width + column];
+ int R, G, B;
+ HsvToRgb(light,1.0, light < mandelDepth ?1.0 :0.0,
+ out R, out G, out B);
+ int color_data = R <<16;
+ color_data |= G <<8;
+ color_data |= B <<0;
+ *((int*)pBackBuffer) = color_data;
+ }
+ }
+ }
+ }
+ else
+ {
+ Trace.WriteLine("GPU computation failed, falling back to CPU");
+ UpdateMandel();
+ bitmap.Unlock();
+ return;
+ }
+ bitmap.AddDirtyRect(new Int32Rect(0,0, bitmap.PixelWidth, bitmap.PixelHeight));
+ }
+ finally
+ {
+ bitmap.Unlock();
+ }
+ }));
         }
         /// <summary>
         /// This method implements the classic "Escape-Time Algorithm"

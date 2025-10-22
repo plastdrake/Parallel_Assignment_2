@@ -9,6 +9,10 @@ extern "C" __declspec(dllexport)
 cudaError_t setCudaDevice(int device);
 extern "C" __declspec(dllexport)
 cudaError_t addWithCuda(int* c, const int* a, const int* b, unsigned int size);
+
+extern "C" __declspec(dllexport)
+int computeMandelWithCuda(int* output, int width, int height,
+    double centerX, double centerY, double mandelWidth, double mandelHeight, int maxDepth);
 // --------------------------------------------------------------------
 // CUDA Kernels
 // --------------------------------------------------------------------
@@ -18,6 +22,38 @@ __global__ void addKernel(int* c, const int* a, const int* b)
 	int i = threadIdx.x;
 	c[i] = a[i] + b[i];
 }
+
+// CUDA kernel for computing Mandelbrot iteration counts
+__global__ void mandelKernel(int* output, int width, int height,
+    double centerX, double centerY, double mandelWidth, double mandelHeight, int maxDepth)
+{
+    int column = blockIdx.x * blockDim.x + threadIdx.x;
+    int row = blockIdx.y * blockDim.y + threadIdx.y;
+    
+    if (column >= width || row >= height) return;
+    
+ // Convert pixel coordinates to Mandelbrot rectangle coordinates
+    double cx = centerX - mandelWidth + column * ((mandelWidth * 2.0) / width);
+double cy = centerY - mandelHeight + row * ((mandelHeight * 2.0) / height);
+    
+    // Compute iteration count using escape-time algorithm
+    int result = 0;
+    double x = 0.0;
+    double y = 0.0;
+    double xx = 0.0, yy = 0.0;
+    
+    while (xx + yy <= 4.0 && result < maxDepth) {
+        xx = x * x;
+   yy = y * y;
+        double xtmp = xx - yy + cx;
+        y = 2.0 * x * y + cy;
+        x = xtmp;
+        result++;
+    }
+    
+    output[row * width + column] = result;
+}
+
 // --------------------------------------------------------------------
 // Main Function
 // --------------------------------------------------------------------
@@ -137,4 +173,65 @@ Error:
 	cudaFree(dev_a);
 	cudaFree(dev_b);
 		return cudaStatus;
+}
+
+// This function uses CUDA to compute Mandelbrot iteration counts in parallel.
+// It allocates device buffer, copies parameters, launches the Mandelbrot kernel,
+// and copies results back to host.
+int computeMandelWithCuda(int* output, int width, int height,
+    double centerX, double centerY, double mandelWidth, double mandelHeight, int maxDepth)
+{
+    int* dev_output = 0;
+    cudaError_t cudaStatus;
+    
+    // Allocate GPU buffer for output
+    int totalPixels = width * height;
+    cudaStatus = cudaMalloc((void**)&dev_output, totalPixels * sizeof(int));
+    if (cudaStatus != cudaSuccess) {
+        fprintf(stderr, "cudaMalloc failed!");
+   return 1;
+  }
+    
+    // Initialize output buffer to zero
+    cudaStatus = cudaMemset(dev_output, 0, totalPixels * sizeof(int));
+    if (cudaStatus != cudaSuccess) {
+        fprintf(stderr, "cudaMemset failed!");
+        cudaFree(dev_output);
+     return 1;
+    }
+    
+    // Launch kernel with 2D grid
+    dim3 threadsPerBlock(16, 16);
+    dim3 numBlocks((width + threadsPerBlock.x - 1) / threadsPerBlock.x,
+       (height + threadsPerBlock.y - 1) / threadsPerBlock.y);
+    
+    mandelKernel<<<numBlocks, threadsPerBlock>>>(dev_output, width, height,
+   centerX, centerY, mandelWidth, mandelHeight, maxDepth);
+    
+    // Check for kernel launch errors
+    cudaStatus = cudaGetLastError();
+    if (cudaStatus != cudaSuccess) {
+   fprintf(stderr, "mandelKernel launch failed: %s\n", cudaGetErrorString(cudaStatus));
+        cudaFree(dev_output);
+        return 1;
+    }
+    
+    // Wait for kernel to finish
+    cudaStatus = cudaDeviceSynchronize();
+    if (cudaStatus != cudaSuccess) {
+  fprintf(stderr, "cudaDeviceSynchronize returned error code %d after launching mandelKernel!\n", cudaStatus);
+        cudaFree(dev_output);
+        return 1;
+    }
+    
+    // Copy output from GPU to host
+    cudaStatus = cudaMemcpy(output, dev_output, totalPixels * sizeof(int), cudaMemcpyDeviceToHost);
+    if (cudaStatus != cudaSuccess) {
+  fprintf(stderr, "cudaMemcpy failed!");
+        cudaFree(dev_output);
+        return 1;
+    }
+    
+    cudaFree(dev_output);
+    return 0; // Success
 }
