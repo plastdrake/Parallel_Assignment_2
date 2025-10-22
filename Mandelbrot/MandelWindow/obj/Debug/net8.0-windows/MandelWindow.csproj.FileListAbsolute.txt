@@ -1,0 +1,16 @@
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.AssemblyInfoInputs.cache
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.AssemblyInfo.cs
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.csproj.CoreCompileInputs.cache
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.sourcelink.json
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\bin\Debug\net8.0-windows\MandelWindow.exe
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\bin\Debug\net8.0-windows\CudaRuntime.dll
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\bin\Debug\net8.0-windows\MandelWindow.deps.json
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\bin\Debug\net8.0-windows\MandelWindow.runtimeconfig.json
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\bin\Debug\net8.0-windows\MandelWindow.dll
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\bin\Debug\net8.0-windows\MandelWindow.pdb
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.dll
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\refint\MandelWindow.dll
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.pdb
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\MandelWindow.genruntimeconfig.cache
+C:\Users\agryt\Documents\GitHub\Card-Roguelite\Mandelbrot\MandelWindow\obj\Debug\net8.0-windows\ref\MandelWindow.dll

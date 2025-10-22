@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|c:\\users\\agryt\\documents\\github\\card-roguelite\\mandelbrot\\mandelwindow\\mandelwindow.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|solutionrelative:mandelwindow\\mandelwindow.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C194316A-4167-5A8E-A56B-5EB69F4EC87D}|CudaRuntime\\CudaRuntime.vcxproj|C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\CudaRuntime\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{C194316A-4167-5A8E-A56B-5EB69F4EC87D}|CudaRuntime\\CudaRuntime.vcxproj|solutionrelative:CudaRuntime\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|c:\\users\\agryt\\documents\\github\\card-roguelite\\mandelbrot\\mandelwindow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|solutionrelative:mandelwindow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MandelWindow",
+              "DocumentMoniker": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
+              "RelativeDocumentMoniker": "MandelWindow\\MandelWindow.csproj",
+              "ToolTip": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
+              "RelativeToolTip": "MandelWindow\\MandelWindow.csproj",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAIwBUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-22T08:40:11.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\Program.cs",
+              "RelativeDocumentMoniker": "MandelWindow\\Program.cs",
+              "ToolTip": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\MandelWindow\\Program.cs",
+              "RelativeToolTip": "MandelWindow\\Program.cs",
+              "ViewState": "AgIAACoBAAAAAAAAAAAAACcAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-22T08:40:41.538Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "kernel.cu",
+              "DocumentMoniker": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\CudaRuntime\\kernel.cu",
+              "RelativeDocumentMoniker": "CudaRuntime\\kernel.cu",
+              "ToolTip": "C:\\Users\\agryt\\Documents\\GitHub\\Card-Roguelite\\Mandelbrot\\CudaRuntime\\kernel.cu",
+              "RelativeToolTip": "CudaRuntime\\kernel.cu",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAuwHAAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-10-22T08:30:08.378Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
