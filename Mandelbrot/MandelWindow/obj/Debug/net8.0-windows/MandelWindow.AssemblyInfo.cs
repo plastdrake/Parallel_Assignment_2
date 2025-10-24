@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MandelWindow")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e4d90620efcc05af29ed4640963bbb034845dc2d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3cfc50f89ff996ec2fed58f64a6cb46f19380675")]
 [assembly: System.Reflection.AssemblyProductAttribute("MandelWindow")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MandelWindow")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
