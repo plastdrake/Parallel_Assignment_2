@@ -34,6 +34,7 @@ namespace MandelWindow
         static WriteableBitmap bitmap;
         static Window window;
         static Image image;
+
         // For animating zooming in/out
         static Thread mandelThread;
         static volatile bool activeMandelThread = true;
@@ -41,13 +42,16 @@ namespace MandelWindow
         static double zoomCenterY = -1.0260970739840185;
         static int stepsCounter = 1;
         static int stepsDirection = 1;
+
         // The bounds for the Mandelbrot rectangle
         static double mandelCenterX = 0.0;
         static double mandelCenterY = 0.0;
         static double mandelWidth = 2.0;
         static double mandelHeight = 2.0;
+
         // The maximum depth when iterating a Madelbrot coordinate
         public static int mandelDepth = 360;
+
         // If true, the code calls UpdateMandelParallel(),
         // else it calls UpdateMandel().
         static bool useParallel = true;
@@ -59,7 +63,7 @@ namespace MandelWindow
 
         // Experiment variables
         static bool runningExperiment = false;
-        static int experimentZoomSteps = 100;
+        static int experimentZoomSteps = 10;
         static long cpuTotalTime = 0;
         static long gpuTotalTime = 0;
         static int renderCount = 0;
@@ -196,10 +200,12 @@ namespace MandelWindow
             }
             else if (e.Key == Key.E)
             {
-                // Start automated experiment
+                // Start automated experiment on a background thread
                 Trace.WriteLine("=== Starting Experiment ===");
-                Trace.WriteLine("Press 'E' to run automated CPU vs GPU performance test");
-                RunExperiment();
+                Trace.WriteLine("Running automated CPU vs GPU performance test...");
+   
+                // Run experiment on a background thread to keep UI responsive
+                Task.Run(() => RunExperiment());
             }
         }
 
@@ -244,13 +250,23 @@ namespace MandelWindow
                 Trace.WriteLine("MANDELBROT PERFORMANCE EXPERIMENT");
                 Trace.WriteLine("========================================");
                 Trace.WriteLine($"Zoom steps: {experimentZoomSteps}");
-                Trace.WriteLine($"Window size: {bitmap.PixelWidth}x{bitmap.PixelHeight}");
+                
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    Trace.WriteLine($"Window size: {bitmap.PixelWidth}x{bitmap.PixelHeight}");
+                });
+  
                 Trace.WriteLine($"Target coordinates: X={zoomCenterX}, Y={zoomCenterY}");
                 Trace.WriteLine("");
 
                 // ===== CPU TEST =====
                 Trace.WriteLine("--- CPU TEST (Sequential) ---");
-                window.Title = "EXPERIMENT: CPU TEST - Starting...";
+      
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    window.Title = "EXPERIMENT: CPU TEST - Starting...";
+                });
+   
                 ResetMandelState();
                 useParallel = false;
                 cpuTotalTime = 0;
@@ -260,17 +276,19 @@ namespace MandelWindow
                 {
                     PerformZoomStep();
                     UpdateMandel();
-                    
-                    // Force UI update to show the zoom animation
-                    Application.Current.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
-            
+
                     if (i % 10 == 0)
                     {
-                        window.Title = $"EXPERIMENT: CPU TEST - Frame {i}/{experimentZoomSteps}";
+                        int currentFrame = i;
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            window.Title = $"EXPERIMENT: CPU TEST - Frame {currentFrame}/{experimentZoomSteps}";
+                        });
+
                         Trace.WriteLine($"CPU Progress: {i}/{experimentZoomSteps} frames");
-                    }
-                    
-                    // Small delay to make the animation visible (optional, comment out for pure performance test)
+                     }
+
+                    // Small delay to make the animation visible
                     Thread.Sleep(10);
                 }
 
@@ -281,7 +299,12 @@ namespace MandelWindow
 
                 // ===== GPU TEST =====
                 Trace.WriteLine("--- GPU TEST (CUDA Parallel) ---");
-                window.Title = "EXPERIMENT: GPU TEST - Starting...";
+                
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    window.Title = "EXPERIMENT: GPU TEST - Starting...";
+                });
+          
                 ResetMandelState();
                 useParallel = true;
                 gpuTotalTime = 0;
@@ -291,17 +314,20 @@ namespace MandelWindow
                 {
                     PerformZoomStep();
                     UpdateMandelParallel();
-   
-                    // Force UI update to show the zoom animation
-                    Application.Current.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
-       
+
                     if (i % 10 == 0)
                     {
-                        window.Title = $"EXPERIMENT: GPU TEST - Frame {i}/{experimentZoomSteps}";
+                        int currentFrame = i;
+
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            window.Title = $"EXPERIMENT: GPU TEST - Frame {currentFrame}/{experimentZoomSteps}";
+                        });
+
                         Trace.WriteLine($"GPU Progress: {i}/{experimentZoomSteps} frames");
                     }
-      
-                    // Small delay to make the animation visible (optional, comment out for pure performance test)
+
+                    // Small delay to make the animation visible
                     Thread.Sleep(10);
                 }
 
@@ -326,7 +352,9 @@ namespace MandelWindow
                 Trace.WriteLine($"GPU,{gpuTime}");
                 Trace.WriteLine($"Speedup,{speedup:F2}");
                 Trace.WriteLine("========================================");
+            
             }
+
             finally
             {
                 // Restore state
@@ -342,9 +370,12 @@ namespace MandelWindow
                 if (useParallel) UpdateMandelParallel();
                 else UpdateMandel();
 
-                window.Title = $"Mode: {(useParallel ? "GPU (parallel)" : "CPU (original)")} - Experiment Complete!";
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    window.Title = $"Mode: {(useParallel ? "GPU (parallel)" : "CPU (original)")} - Experiment Complete!";
+                });
             }
-        }
+   }
 
         /// <summary>
         /// Resets the Mandelbrot state to initial values for experiment consistency.
