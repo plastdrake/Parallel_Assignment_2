@@ -250,6 +250,7 @@ namespace MandelWindow
 
                 // ===== CPU TEST =====
                 Trace.WriteLine("--- CPU TEST (Sequential) ---");
+                window.Title = "EXPERIMENT: CPU TEST - Starting...";
                 ResetMandelState();
                 useParallel = false;
                 cpuTotalTime = 0;
@@ -259,11 +260,18 @@ namespace MandelWindow
                 {
                     PerformZoomStep();
                     UpdateMandel();
-
+                    
+                    // Force UI update to show the zoom animation
+                    Application.Current.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
+            
                     if (i % 10 == 0)
                     {
+                        window.Title = $"EXPERIMENT: CPU TEST - Frame {i}/{experimentZoomSteps}";
                         Trace.WriteLine($"CPU Progress: {i}/{experimentZoomSteps} frames");
                     }
+                    
+                    // Small delay to make the animation visible (optional, comment out for pure performance test)
+                    Thread.Sleep(10);
                 }
 
                 long cpuTime = cpuTotalTime;
@@ -273,6 +281,7 @@ namespace MandelWindow
 
                 // ===== GPU TEST =====
                 Trace.WriteLine("--- GPU TEST (CUDA Parallel) ---");
+                window.Title = "EXPERIMENT: GPU TEST - Starting...";
                 ResetMandelState();
                 useParallel = true;
                 gpuTotalTime = 0;
@@ -282,11 +291,18 @@ namespace MandelWindow
                 {
                     PerformZoomStep();
                     UpdateMandelParallel();
-
+   
+                    // Force UI update to show the zoom animation
+                    Application.Current.Dispatcher.Invoke(() => { }, System.Windows.Threading.DispatcherPriority.Render);
+       
                     if (i % 10 == 0)
                     {
+                        window.Title = $"EXPERIMENT: GPU TEST - Frame {i}/{experimentZoomSteps}";
                         Trace.WriteLine($"GPU Progress: {i}/{experimentZoomSteps} frames");
                     }
+      
+                    // Small delay to make the animation visible (optional, comment out for pure performance test)
+                    Thread.Sleep(10);
                 }
 
                 long gpuTime = gpuTotalTime;
