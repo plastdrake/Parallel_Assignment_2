@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|d:\\school\\parallel_assignment_2\\mandelbrot\\mandelwindow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|solutionrelative:mandelwindow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C194316A-4167-5A8E-A56B-5EB69F4EC87D}|CudaRuntime\\CudaRuntime.vcxproj|D:\\School\\Parallel_Assignment_2\\Mandelbrot\\CudaRuntime\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}",
       "RelativeMoniker": "D:0:0:{C194316A-4167-5A8E-A56B-5EB69F4EC87D}|CudaRuntime\\CudaRuntime.vcxproj|solutionrelative:CudaRuntime\\kernel.cu||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|d:\\school\\parallel_assignment_2\\mandelbrot\\mandelwindow\\mandelwindow.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|solutionrelative:mandelwindow\\mandelwindow.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\School\\Parallel_Assignment_2\\Mandelbrot\\Mandelbrot\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Mandelbrot\\.editorconfig||{3B902123-F8A7-4915-9F01-361F908088D0}|"
+      "AbsoluteMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|d:\\school\\parallel_assignment_2\\mandelbrot\\mandelwindow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{372C7CAE-D4A6-4A2A-ABE1-3BA5B02BDD97}|MandelWindow\\MandelWindow.csproj|solutionrelative:mandelwindow\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -46,51 +38,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": ".editorconfig",
-              "DocumentMoniker": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\Mandelbrot\\.editorconfig",
-              "RelativeDocumentMoniker": "Mandelbrot\\.editorconfig",
-              "ToolTip": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\Mandelbrot\\.editorconfig",
-              "RelativeToolTip": "Mandelbrot\\.editorconfig",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-10-24T08:15:35.225Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MandelWindow.csproj",
-              "DocumentMoniker": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
-              "RelativeDocumentMoniker": "MandelWindow\\MandelWindow.csproj",
-              "ToolTip": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\MandelWindow.csproj",
-              "RelativeToolTip": "MandelWindow\\MandelWindow.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-22T08:40:11.787Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\Program.cs",
               "RelativeDocumentMoniker": "MandelWindow\\Program.cs",
               "ToolTip": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\MandelWindow\\Program.cs",
               "RelativeToolTip": "MandelWindow\\Program.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAASwEAAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-22T08:40:41.538Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "kernel.cu",
               "DocumentMoniker": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\CudaRuntime\\kernel.cu",
               "RelativeDocumentMoniker": "CudaRuntime\\kernel.cu",
               "ToolTip": "D:\\School\\Parallel_Assignment_2\\Mandelbrot\\CudaRuntime\\kernel.cu",
               "RelativeToolTip": "CudaRuntime\\kernel.cu",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD4AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-10-22T08:30:08.378Z",
               "EditorCaption": ""

@@ -22,11 +22,14 @@ namespace MandelWindow
         // --------------------------------------------------------------------
         [DllImport("CudaRuntime.dll")]
         static extern int setCudaDevice(int device);
+
         [DllImport("CudaRuntime.dll")]
         static extern int addWithCuda([Out] int[] c, [In] int[] a, [In] int[] b, uint size);
+
         [DllImport("CudaRuntime.dll")]
         static extern int computeMandelWithCuda([Out] int[] output, int width, int height,
         double centerX, double centerY, double mandelWidth, double mandelHeight, int maxDepth);
+
         // --------------------------------------------------------------------
         // Attributes
         // --------------------------------------------------------------------
@@ -87,6 +90,7 @@ namespace MandelWindow
             image = new Image();
             RenderOptions.SetBitmapScalingMode(image, BitmapScalingMode.NearestNeighbor);
             RenderOptions.SetEdgeMode(image, EdgeMode.Aliased);
+
             // Create a Window and set the Image as its Content
             window = new Window();
             window.Content = image;
@@ -108,6 +112,7 @@ namespace MandelWindow
             image.Stretch = Stretch.None;
             image.HorizontalAlignment = HorizontalAlignment.Left;
             image.VerticalAlignment = VerticalAlignment.Top;
+
             // Set up event handlers
             image.MouseLeftButtonDown += new MouseButtonEventHandler(image_MouseLeftButtonDown);
             image.MouseRightButtonDown += new MouseButtonEventHandler(image_MouseRightButtonDown);
@@ -115,11 +120,14 @@ namespace MandelWindow
             window.MouseWheel += new MouseWheelEventHandler(window_MouseWheel);
             window.Closing += Window_Closing;
             window.KeyDown += Window_KeyDown;
+
             // Create the WPF Application
             Application app = new Application();
+
             // Update the WriteableBitmap
             if (useParallel) UpdateMandelParallel();
             else UpdateMandel();
+
             // This thread is used to zoom in/out of the Image
             mandelThread = new Thread(() =>
              {
@@ -522,7 +530,7 @@ namespace MandelWindow
         /// </summary>
         public static void UpdateMandel()
         {
-            renderStopwatch.Restart();
+            renderStopwatch.Restart(); // Start the stop watch for experimentation for time measurement
 
             Application.Current.Dispatcher.Invoke(new Action(() =>
             {
@@ -583,7 +591,7 @@ namespace MandelWindow
                 }
             }));
 
-            renderStopwatch.Stop();
+            renderStopwatch.Stop(); // Stop the stop watch
             lastCpuTime = renderStopwatch.ElapsedMilliseconds;
 
             if (runningExperiment)
