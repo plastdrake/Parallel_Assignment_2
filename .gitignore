@@ -1,0 +1,69 @@
+# Repo-level .gitignore for Visual Studio /.NET, C++/CUDA build artifacts and editor/user files
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+
+# VS Code
+.vscode/
+
+# Build output (common names)
+bin/
+Bin/
+obj/
+Obj/
+Debug/
+Release/
+
+# Platform / arch folders commonly created by builds
+x64/
+x86/
+
+# Visual C++ / CUDA artifacts
+*.ilk
+*.pdb
+*.ipdb
+*.obj
+*.exp
+*.idb
+*.lib
+*.dll.recipe
+*.deps
+*.cubin
+*.fatbin
+*.ptx
+*.cu-*.deps
+
+# VCXPROJ user files
+*.vcxproj.user
+
+# Misc generated files
+*.log
+*.cache
+*.tmp
+*.vsconfig
+project.assets.json
+
+# NuGet
+*.nupkg
+packages/
+
+# Rider / VS temporary
+*.DotSettings.user
+
+# Copilot / IDE snapshots and caches
+CopilotSnapshots/
+.MicrosoftWebEditor/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Keep local settings out
+*.local
