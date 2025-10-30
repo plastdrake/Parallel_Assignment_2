@@ -376,7 +376,7 @@ namespace MandelWindow
                     window.Title = $"Mode: {(useParallel ? "GPU (parallel)" : "CPU (original)")} - Experiment Complete!";
                 });
             }
-   }
+        }
 
         /// <summary>
         /// Resets the Mandelbrot state to initial values for experiment consistency.
@@ -642,8 +642,7 @@ namespace MandelWindow
                                      pBackBuffer += column * 4;
                                      int light = iterationCounts[row * width + column];
                                      int R, G, B;
-                                     HsvToRgb(light, 1.0, light < mandelDepth ? 1.0 : 0.0,
-                             out R, out G, out B);
+                                     HsvToRgb(light, 1.0, light < mandelDepth ? 1.0 : 0.0, out R, out G, out B);
                                      int color_data = R << 16;
                                      color_data |= G << 8;
                                      color_data |= B << 0;
