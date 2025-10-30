@@ -354,13 +354,6 @@ namespace MandelWindow
                 Trace.WriteLine($"Speedup Factor:    {speedup:F2}x");
                 Trace.WriteLine($"Performance Gain:  {((speedup - 1) * 100):F1}%");
                 Trace.WriteLine("========================================");
-                Trace.WriteLine("");
-                Trace.WriteLine("Copy these values to Excel for charting:");
-                Trace.WriteLine($"CPU,{cpuTime}");
-                Trace.WriteLine($"GPU,{gpuTime}");
-                Trace.WriteLine($"Speedup,{speedup:F2}");
-                Trace.WriteLine("========================================");
-            
             }
 
             finally
